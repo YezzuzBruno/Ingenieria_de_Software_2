@@ -35,7 +35,7 @@ public class WebDriverDemo {
 		//Close the Browser.
 	    driver.close();
 	}
-	
+	//VALIDOS----------------------------------------------------------------------------------
 	@Test
 	public void porcentajeNegativo() {      
 	      // Enter value -10 in the first number of the percent Calculator
@@ -145,6 +145,27 @@ public class WebDriverDemo {
 	      
 	      // Assert actual value and expected value
 	      assertEquals(result, "0");     
+	}
+        //INVALIDO-------------------------------------------------------------------------------
+	public void ambosString() {
+	      
+	      // Enter value 0 in the first number of the percent Calculator
+	      driver.findElement(By.id("cpar1")).sendKeys("diez");
+	      
+	      // Enter value 50 in the second number of the percent Calculator
+	      driver.findElement(By.id("cpar2")).sendKeys("cien");
+	      
+	      // Click Calculate Button
+	      driver.findElement(By.xpath("//*[@id=\"content\"]/form[1]/table/tbody/tr[2]/td/input[2]")).click();
+
+	      
+	      // Get the Result Text based on its xpath
+	      String result =
+	         driver.findElement(By.xpath("//*[@id=\"content\"]/p[2]/font")).getText();
+
+	      
+	      // Assert actual value and expected value
+	      assertEquals(result, "Please provide two numeric values in any fields below.");     
 	}
 	
 	
